@@ -43,7 +43,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 // Show and Hide Job function
-// 1. Show & hide VIEWMORE button
+// 1. Hover Show & hide VIEWMORE button
 const jobInfo = document.querySelectorAll('.job-info-container-border');
 const showJobInfo = document.querySelectorAll('.show-jobinfo');
 const hideJobInfo = document.querySelectorAll('.hide-jobinfo');
@@ -71,13 +71,14 @@ const jobContentLast = document.querySelectorAll('.content-last');
 const hobby = document.querySelector('.hobby-icons');
 const infoLevel = document.querySelectorAll('.info-level');
 
-console.log(jobContentFirst);
-
+//
 for (let i = 0; i < showJobInfo.length; i++) {
   if (i >= 0 && i < jobContentFirst.length) {
     showJobInfo[i].addEventListener('click', function () {
       jobContentFirst[i].classList.remove('hidden');
       jobContentLast[i].classList.remove('hidden');
+      // Ẩn VIEWMORE button
+      showJobInfo[i].classList.add('hidden');
 
       // Ẩn mouseover VIEWMORE khi click vào và hiện VIEWLESS
       jobInfo[i].addEventListener('mouseover', function () {
@@ -87,8 +88,10 @@ for (let i = 0; i < showJobInfo.length; i++) {
       hideJobInfo[i].classList.remove('hidden');
     });
   } else if (i === jobContentFirst.length) {
-    showJobInfo[jobContentFirst.length].addEventListener('click', function () {
+    showJobInfo[i].addEventListener('click', function () {
       hobby.classList.remove('hidden');
+      // Ẩn VIEWMORE button
+      showJobInfo[i].classList.add('hidden');
 
       // Ẩn mouseover VIEWMORE khi click vào và hiện VIEWLESS
       jobInfo[i].addEventListener('mouseover', function () {
@@ -100,6 +103,8 @@ for (let i = 0; i < showJobInfo.length; i++) {
   } else {
     showJobInfo[i].addEventListener('click', function () {
       infoLevel[i - (jobContentFirst.length + 1)].classList.remove('hidden');
+      // Ẩn VIEWMORE button
+      showJobInfo[i].classList.add('hidden');
 
       // Ẩn mouseover VIEWMORE khi click vào và hiện VIEWLESS
       jobInfo[i].addEventListener('mouseover', function () {
